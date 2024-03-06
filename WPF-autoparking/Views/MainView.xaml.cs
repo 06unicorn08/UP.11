@@ -15,15 +15,21 @@ using System.Windows.Shapes;
 namespace WPF_autoparking.Views
 {
     /// <summary>
-    /// Логика взаимодействия для LoginView.xaml
+    /// Логика взаимодействия для MainView.xaml
     /// </summary>
-    public partial class LoginView : Window
+    public partial class MainView : Window
     {
-        public LoginView()
+        public MainView()
         {
             InitializeComponent();
         }
-
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -38,11 +44,6 @@ namespace WPF_autoparking.Views
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

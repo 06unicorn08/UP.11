@@ -12,12 +12,20 @@ namespace WPF_autoparking
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class AutoParkEntities : DbContext
     {
+        private static AutoParkEntities _context;
         public AutoParkEntities()
             : base("name=AutoParkEntities")
         {
+        }
+
+        public static AutoParkEntities GetContext()
+        {
+            if(_context == null)
+              _context = new AutoParkEntities();
+            return _context;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
