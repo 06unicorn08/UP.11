@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,9 +64,66 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Accounts.cs">
+      <DependentUpon>AutoParkindModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AutoParkindModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoParkindModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoParkindModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoParkindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoParkindModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoParkindModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CarCategories.cs">
+      <DependentUpon>AutoParkindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarCategoryMappings.cs">
+      <DependentUpon>AutoParkindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarDamageHistory.cs">
+      <DependentUpon>AutoParkindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cars.cs">
+      <DependentUpon>AutoParkindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarWithCategories.cs">
+      <DependentUpon>AutoParkindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customers.cs">
+      <DependentUpon>AutoParkindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employees.cs">
+      <DependentUpon>AutoParkindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InsurancePolicies.cs">
+      <DependentUpon>AutoParkindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Locations.cs">
+      <DependentUpon>AutoParkindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payments.cs">
+      <DependentUpon>AutoParkindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RentalHistory.cs">
+      <DependentUpon>AutoParkindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Rentals.cs">
+      <DependentUpon>AutoParkindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TopEmployeeRentals.cs">
+      <DependentUpon>AutoParkindModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -81,6 +147,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="AutoParkindModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AutoParkindModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="AutoParkindModel.edmx.diagram">
+      <DependentUpon>AutoParkindModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -101,6 +175,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AutoParkindModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AutoParkindModel.Context.cs</LastGenOutput>
+      <DependentUpon>AutoParkindModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="AutoParkindModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutoParkindModel.edmx</DependentUpon>
+      <LastGenOutput>AutoParkindModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

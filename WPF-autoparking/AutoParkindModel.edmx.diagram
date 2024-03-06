@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6033a96fdf5b4f2c8d7976bfd1c9aa7f" Name="Diagram1">
+        <EntityTypeShape EntityType="AutroParkingModel.Accounts" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutroParkingModel.CarCategories" Width="1.5" PointX="3.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutroParkingModel.CarCategoryMappings" Width="1.5" PointX="6" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutroParkingModel.Cars" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutroParkingModel.Customers" Width="1.5" PointX="3.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutroParkingModel.Employees" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutroParkingModel.InsurancePolicies" Width="1.5" PointX="6" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutroParkingModel.Locations" Width="1.5" PointX="1.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutroParkingModel.Payments" Width="1.5" PointX="8.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutroParkingModel.RentalHistory" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutroParkingModel.Rentals" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutroParkingModel.CarDamageHistory" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutroParkingModel.CarWithCategories" Width="1.5" PointX="8.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutroParkingModel.TopEmployeeRentals" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <AssociationConnector Association="AutroParkingModel.FK__Accounts__employ__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="AutroParkingModel.FK_CarCategoryMappings_CarCategories1" ManuallyRouted="false" />
+        <AssociationConnector Association="AutroParkingModel.FK_CarCategoryMappings_Cars1" ManuallyRouted="false" />
+        <AssociationConnector Association="AutroParkingModel.FK__Insurance__car_i__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="AutroParkingModel.FK__Rentals__car_id__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="AutroParkingModel.FK_Cars_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="AutroParkingModel.FK__Rentals__custome__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="AutroParkingModel.FK_Rentals_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="AutroParkingModel.FK__Payments__rental__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="AutroParkingModel.FK_RentalHistory_Rentals" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
