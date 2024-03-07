@@ -42,7 +42,23 @@ namespace WPF_autoparking.Views
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            string username = txtUser.Text;
+            string password = txtPass.Password;
 
+            var account = AutoParkEntities.GetContext().Accounts.FirstOrDefault(a => a.username == username && a.password == password);
+
+            if (account != null)
+            {
+                // Авторизация прошла успешно, открываем новое окно
+                MainView otherWindow = new MainView();
+                otherWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                // Неверные учетные данные
+                MessageBox.Show("Неверное имя пользователя или пароль");
+            }
         }
     }
 }
