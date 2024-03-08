@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_autoparking.ViewModel;
 
 namespace WPF_autoparking.Views
 {
@@ -31,9 +32,10 @@ namespace WPF_autoparking.Views
             dataGrid.ItemsSource = AutoParkEntities.GetContext().CarWithCategories.ToList();
         }
 
-        private void btnReport_Click(object sender, RoutedEventArgs e)
+        private async void btnReport_Click(object sender, RoutedEventArgs e)
         {
-
+            ReportModel report = new ReportModel();
+            await report.CarGenAsync();
         }
     }
 }
