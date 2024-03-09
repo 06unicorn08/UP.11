@@ -14,6 +14,7 @@ namespace WPF_autoparking.ViewModel
     {
         private Page _CurPage = new CarPage();
         private Page _carPage = new CarPage();
+        private Page _paymentPage = new PaymentPage();
 
         public Page CurPage
         {
@@ -26,6 +27,13 @@ namespace WPF_autoparking.ViewModel
             get
             {
                 return new RelayCommand(() => CurPage = _carPage);
+            }
+        }
+        public ICommand PaymentPage
+        {
+            get
+            {
+                return new RelayCommand(() => CurPage = _paymentPage);
             }
         }
     }

@@ -186,6 +186,11 @@
                                     <ImageSource x:Key="Img">../Resources/Icons/car.png</ImageSource>
                                 </Button.Resources>
                             </Button>
+                            <Button Template="{StaticResource ResourceKey=SlideMenuBtn}" Command="{Binding PaymentPage}" Content="Оплаты">
+                                <Button.Resources>
+                                    <ImageSource x:Key="Img">../Resources/Icons/money.png</ImageSource>
+                                </Button.Resources>
+                            </Button>
                         </StackPanel>
                         <ToggleButton Focusable="False" x:Name="OpenCloseSlideMenuBtn" Height="20" Width="20"
                   VerticalAlignment="Bottom" HorizontalAlignment="Left"

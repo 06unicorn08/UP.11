@@ -96,6 +96,45 @@ namespace WPF_autoparking.ViewModel
             });
         }
 
+        public async Task PayGenAsync(int id)
+        {
+            await Task.Run(() =>
+            {
+                var DataList = AutoParkEntities.GetContext().GetPaymentsByStatus(id).ToList();
+                var application = new Word.Application();
+                var templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates", "Payment.docx");
+                Word.Document document = application.Documents.Add(Template: templatePath, Visible: true);
+
+                Word.Table table = document.Tables[1];
+
+
+                int rowIndex = 2;
+                foreach (var data in DataList)
+                {
+                    var newRow = table.Rows.Add();
+
+                    newRow.Cells[1].Range.Text = $"{data.payment_id}";
+                    newRow.Cells[2].Range.Text = $"{data.rental_id}";
+                    newRow.Cells[3].Range.Text = $"{data.payment_status}";
+                }
+                document.Bookmarks["Table"].Range.Tables[1].Rows[2].Delete();
+
+                var saveFileDialog = new Microsoft.Win32.SaveFileDialog
+                {
+                    Filter = "Документ Word (*.docx)|*.docx",
+                    Title = "Сохранить отчет"
+                };
+
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    document.SaveAs2(saveFileDialog.FileName);
+                    document.Close();
+                }
+
+                application.Quit();
+            });
+        }
+
         ~ReportModel()
         {
             Dispose(false);

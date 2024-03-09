@@ -12,7 +12,9 @@ namespace WPF_autoparking
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
+    
     public partial class AutoParkEntities : DbContext
     {
         private static AutoParkEntities _context;
@@ -23,11 +25,10 @@ namespace WPF_autoparking
 
         public static AutoParkEntities GetContext()
         {
-            if(_context == null)
-              _context = new AutoParkEntities();
+            if (_context == null)
+                _context = new AutoParkEntities();
             return _context;
         }
-    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -47,5 +48,14 @@ namespace WPF_autoparking
         public virtual DbSet<CarDamageHistory> CarDamageHistory { get; set; }
         public virtual DbSet<CarWithCategories> CarWithCategories { get; set; }
         public virtual DbSet<TopEmployeeRentals> TopEmployeeRentals { get; set; }
+    
+        public virtual ObjectResult<GetPaymentsByStatus_Result> GetPaymentsByStatus(Nullable<int> status)
+        {
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPaymentsByStatus_Result>("GetPaymentsByStatus", statusParameter);
+        }
     }
 }
