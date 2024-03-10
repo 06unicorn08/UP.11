@@ -51,9 +51,10 @@ namespace WPF_autoparking.Views
             await report.PayGenAsync(3);
         }
 
-        private void btnReportFull_Click(object sender, RoutedEventArgs e)
+        private async void btnReportFull_Click(object sender, RoutedEventArgs e)
         {
-
+            ReportModel report = new ReportModel();
+            await report.PayFullGenAsync();
         }
     }
 }
