@@ -146,6 +146,9 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ReportModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="Views\CarDamagePage.xaml.cs">
+      <DependentUpon>CarDamagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CarPage.xaml.cs">
       <DependentUpon>CarPage.xaml</DependentUpon>
     </Compile>
@@ -189,6 +192,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Templates\CarDamage.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Templates\Cars.docx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -204,6 +210,10 @@
     <Resource Include="Resources\loginBackgrounds.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\CarDamagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CarPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -199,6 +199,48 @@ namespace WPF_autoparking.ViewModel
             sheet.Columns.AutoFit();
         }
 
+        public async Task CarDamageGenAsync()
+        {
+            await Task.Run(() =>
+            {
+                var CarDamage = AutoParkEntities.GetContext().CarDamageHistory.Take(15).ToList();
+
+                var application = new Word.Application();
+                var templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates", "CarDamage.docx");
+                Word.Document document = application.Documents.Add(Template: templatePath, Visible: true);
+
+                Word.Table table = document.Tables[1];
+
+
+                int rowIndex = 2;
+                foreach (var his in CarDamage)
+                {
+
+                    var newRow = table.Rows.Add();
+
+                    newRow.Cells[1].Range.Text = $"{his.brand} {his.model}";
+                    newRow.Cells[2].Range.Text = his.client_name;
+                    newRow.Cells[3].Range.Text = his.damage_description;
+                }
+                document.Bookmarks["Table"].Range.Tables[1].Rows[2].Delete();
+
+                var saveFileDialog = new Microsoft.Win32.SaveFileDialog
+                {
+                    Filter = "Документ Word (*.docx)|*.docx",
+                    Title = "Сохранить отчет"
+                };
+
+                if (saveFileDialog.ShowDialog() == true)
+                {
+
+                    document.SaveAs2(saveFileDialog.FileName);
+                    document.Close();
+                }
+
+                application.Quit();
+            });
+        }
+
         ~ReportModel()
         {
             Dispose(false);
