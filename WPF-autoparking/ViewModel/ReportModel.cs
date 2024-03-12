@@ -241,6 +241,8 @@ namespace WPF_autoparking.ViewModel
             });
         }
 
+
+
         ~ReportModel()
         {
             Dispose(false);

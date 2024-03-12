@@ -161,6 +161,9 @@
     <Compile Include="Views\PaymentPage.xaml.cs">
       <DependentUpon>PaymentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TopRentalPage.xaml.cs">
+      <DependentUpon>TopRentalPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -227,6 +230,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PaymentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TopRentalPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

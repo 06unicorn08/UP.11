@@ -196,6 +196,11 @@
                                     <ImageSource x:Key="Img">../Resources/Icons/avaria.png</ImageSource>
                                 </Button.Resources>
                             </Button>
+                            <Button Template="{StaticResource ResourceKey=SlideMenuBtn}" Command="{Binding TopRentalPage}" Content="Количество аренд">
+                                <Button.Resources>
+                                    <ImageSource x:Key="Img">../Resources/Icons/key.png</ImageSource>
+                                </Button.Resources>
+                            </Button>
                         </StackPanel>
                         <ToggleButton Focusable="False" x:Name="OpenCloseSlideMenuBtn" Height="20" Width="20"
                   VerticalAlignment="Bottom" HorizontalAlignment="Left"
