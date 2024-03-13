@@ -35,7 +35,8 @@ namespace WPF_autoparking.Views
 
         private async void btnReport_Click(object sender, RoutedEventArgs e)
         {
-
+            ReportModel report = new ReportModel();
+            await report.TopEmployeesGenAsync();
         }
     }
 }

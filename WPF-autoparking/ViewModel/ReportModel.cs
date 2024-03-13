@@ -241,7 +241,43 @@ namespace WPF_autoparking.ViewModel
             });
         }
 
+        public async Task TopEmployeesGenAsync()
+        {
+            await Task.Run(() =>
+            {
+                var lastFiveEmployee = AutoParkEntities.GetContext().TopEmployeeRentals.ToList();
+                var application = new Word.Application();
+                var templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates", "TopEmployee.docx");
+                Word.Document document = application.Documents.Add(Template: templatePath, Visible: true);
 
+ 
+                Word.Table table = document.Tables[1];
+
+                int rowIndex = 2;
+                foreach (var employee in lastFiveEmployee)
+                {
+                    var newRow = table.Rows.Add();
+
+                    newRow.Cells[1].Range.Text = $"{employee.last_name} {employee.first_name}";
+                    newRow.Cells[2].Range.Text = employee.rental_count.ToString();
+                }
+                document.Bookmarks["Table"].Range.Tables[1].Rows[2].Delete();
+
+                var saveFileDialog = new Microsoft.Win32.SaveFileDialog
+                {
+                    Filter = "Документ Word (*.docx)|*.docx",
+                    Title = "Сохранить отчет"
+                };
+
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    document.SaveAs2(saveFileDialog.FileName);
+                    document.Close();
+                }
+
+                application.Quit();
+            });
+        }
 
         ~ReportModel()
         {
